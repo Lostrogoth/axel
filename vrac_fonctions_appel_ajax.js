@@ -1,4 +1,3 @@
-<script>
 
 	var sessionId = 0;
 
@@ -75,5 +74,3 @@
 		}
 
 	});
-
-</script>
