@@ -1,4 +1,4 @@
-<?php
+
 	function getpdo() { // acces à la bdd
 		try
 		{
@@ -48,5 +48,3 @@
 
 		echo 1;
 	}
-
-?>
