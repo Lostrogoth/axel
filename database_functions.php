@@ -23,7 +23,7 @@
 			// Get User ID
 			$reponse = $bdd->query('SELECT MAX(user) FROM tracks');
 			while ($donnees = $reponse->fetch())
-		    	$id = $donnees['user'] + 1;
+		    	$id = $donnees[0] + 1;
 			$reponse->closeCursor();
 
 			echo $id;
