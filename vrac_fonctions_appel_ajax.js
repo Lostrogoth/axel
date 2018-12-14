@@ -1,5 +1,3 @@
-// REMPLIR LES PATH
-
 <script>
 
 	var sessionId = 0;
