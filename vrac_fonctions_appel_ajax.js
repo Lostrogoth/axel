@@ -21,7 +21,7 @@
 		function receiveNewSessionId() {
 
 			$.ajax({
-				url: "/path/createNewSessionId",
+				url: "/database_functions.php/createNewSessionId",
 				success: function(data) {
 
 					if (data && data > 0)
@@ -54,10 +54,12 @@
 			}
 			var now = new Date();
 			var date = now.getDate();
+			var long = position.coords.longitude;
+			var lat = position.coords.latitude;
 
 			$.ajax({
-				url: '/path/getLocationData',
-				data: { user:sessionId, jour:date, long:position.coords.longitude, lat:position.coords.latitude },
+				url: '/database_functions.php/getLocationData',
+				data: { user:sessionId, jour:date, long:long, lat:lat},
 				type: 'post',
 				success: function(){
 					console.log("success");
