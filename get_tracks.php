@@ -7,7 +7,7 @@
   }
 
 
-  function get_tracks() {     // {[{"lat":x.x"lon":x.x}{"lat":x.x"lon":x.x}][{"lat":x.x"lon":x.x}{"lat":x.x"lon":x.x}]}
+  function get_tracks() {     // {[{lat: x.x, lon: x.x},{lat: x.x, lon: x.x}][{lat: x.x, lon: x.x},{lat: x.x, lon: x.x}]}
 
     $bdd = getpdo();
     $max_userid = get_max_userid($bdd);
@@ -19,8 +19,15 @@
     {
       $tracks .= '['
       $reponse = $bdd->query('SELECT lat , lon FROM tracks WHERE user = \'' . $userid . '\'');
+      $i = 0;
       while ($donnees = $reponse->fetch())
-        $tracks .= '{"lat":' . $donnees['lat'] . '"lng:' . $donnees['lon'] . '"}';
+      {
+        if ($i != 0) {
+          $tracks .= ','
+        }
+        $tracks .= '{lat: ' . $donnees['lat'] . ', lng: ' . $donnees['lon'] . '}';
+        $i++;
+      }
       $reponse->closeCursor();
       $tracks .= ']'
       $userid++;
