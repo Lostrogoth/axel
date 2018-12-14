@@ -23,7 +23,7 @@
 			$.ajax({
 				url: "/path/createNewSessionId",
 				success: function(data) {
-		
+
 					if (data && data > 0)
 						sessionId = data;
 					else{
@@ -47,14 +47,17 @@
 		function sendLocationData() {
 
 		// enregistrer dans les variables long et lat, à ce moment là
-			getLocation();
-
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition);
+			} else {
+				document.write("Geolocation is not supported by this browser.")
+			}
 			var now = new Date();
 			var date = now.getDate();
 
 			$.ajax({
 				url: '/path/getLocationData',
-				data: { id:sessionId, jour:date, long:long, lat:lat },
+				data: { user:sessionId, jour:date, long:position.coords.longitude, lat:position.coords.latitude },
 				type: 'post',
 				success: function(){
 					console.log("success");
