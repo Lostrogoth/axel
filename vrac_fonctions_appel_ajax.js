@@ -52,8 +52,6 @@
 			}
 			var now = new Date();
 			var date = now.getDate();
-			var long = position.coords.longitude;
-			var lat = position.coords.latitude;
 
 			$.ajax({
 				url: './database_functions.php/getLocationData',
@@ -68,6 +66,11 @@
 					console.log(data);
 				}
 			});
+		}
+
+		function putPosInVar() {
+			var long = position.coords.longitude;
+			var lat = position.coords.latitude;
 		}
 
 		function sendLocationFailed() {
