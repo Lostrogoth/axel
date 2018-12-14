@@ -68,7 +68,7 @@
 			});
 		}
 
-		function putPosInVar() {
+		function putPosInVar(position) {
 			var long = position.coords.longitude;
 			var lat = position.coords.latitude;
 		}
