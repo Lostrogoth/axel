@@ -46,7 +46,7 @@
 
 		// enregistrer dans les variables long et lat, à ce moment là
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition();
+			navigator.geolocation.getCurrentPosition(putPosInVar);
 			} else {
 				document.write("Geolocation is not supported by this browser.")
 			}
