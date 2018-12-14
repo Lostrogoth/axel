@@ -18,7 +18,7 @@
 		function receiveNewSessionId() {
 
 			$.ajax({
-				url: "/database_functions.php/createNewSessionId",
+				url: "./database_functions.php/createNewSessionId",
 				success: function(data) {
 
 					if (data && data > 0)
@@ -33,7 +33,8 @@
 					console.log("l'appel de la fonction 'createNewSessionId' a échoué.");
 					console.log(data);
 				}
-			})
+			});
+			console.log(sessionId);
 		}
 
 		function newIdFailed() {
@@ -45,7 +46,7 @@
 
 		// enregistrer dans les variables long et lat, à ce moment là
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(showPosition);
+			navigator.geolocation.getCurrentPosition();
 			} else {
 				document.write("Geolocation is not supported by this browser.")
 			}
@@ -55,7 +56,7 @@
 			var lat = position.coords.latitude;
 
 			$.ajax({
-				url: '/database_functions.php/getLocationData',
+				url: './database_functions.php/getLocationData',
 				data: { user:sessionId, jour:date, long:long, lat:lat},
 				type: 'post',
 				success: function(){
