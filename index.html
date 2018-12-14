@@ -8,26 +8,10 @@
 
     <p>Click the button to get your coordinates.</p>
 
-    <button onclick="getLocation()">Try It</button>
+    <button id="startBtn" style="width:100px;border-radius:5px;background-color:blue;color:white">Try It</button>
 
     <p id="demo"></p>
 
-    <script>
-    var x = document.getElementById("demo");
-
-    function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-      }
-    } setInterval(getLocation,10000);
-
-    function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude +
-      "<br>Longitude: " + position.coords.longitude;
-    }
-    </script>
-
   </body>
 </html>
+<script type="text/javascript" src="./vrac_fonctions_appel_ajax.js"></script>
