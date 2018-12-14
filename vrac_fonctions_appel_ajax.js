@@ -10,8 +10,6 @@
 		$('#startBtn').click(function() {
 
 			receiveNewSessionId();
-
-			setInterval(sendLocationData(), 10000);
 		});
 
 	// quand l'user click sur GO
@@ -21,9 +19,12 @@
 				url: "./database_functions.php/createNewSessionId",
 				success: function(data) {
 
-					if (data && data > 0)
+					if (data && data > 0) {
 						sessionId = data;
-					else{
+
+						setInterval(sendLocationData(), 10000);
+					}
+					else {
 						newIdFailed();
 						console.log("no data - data = "+data);
 					}
@@ -34,7 +35,7 @@
 					console.log(data);
 				}
 			});
-			console.log(sessionId);
+			console.log("id = "+sessionId);
 		}
 
 		function newIdFailed() {
@@ -57,8 +58,9 @@
 				url: './database_functions.php/getLocationData',
 				data: { user:sessionId, jour:date, long:long, lat:lat},
 				type: 'post',
-				success: function(){
+				success: function(data){
 					console.log("success");
+					console.log(data);
 				},
 				error : function(data) {
 					sendLocationFailed();

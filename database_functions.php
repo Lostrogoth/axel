@@ -9,21 +9,25 @@
 		{
 		        die('Erreur : '.$e->getMessage());
 		}
+		return (NULL);
 	}
 
 	function createNewSessionId() {
 		$bdd = getpdo();
 		$id = 1;
 
-		// Get User ID
-		$reponse = $bdd->query('SELECT MAX(user) FROM tracks');
-		while ($donnees = $reponse->fetch())
-		{
-    	$id = $donnees['user'] + 1;
-		}
-		$reponse->closeCursor();
+		if (!$bdd)
+			echo -1;
 
-		echo $id;
+		else {
+			// Get User ID
+			$reponse = $bdd->query('SELECT MAX(user) FROM tracks');
+			while ($donnees = $reponse->fetch())
+		    	$id = $donnees['user'] + 1;
+			$reponse->closeCursor();
+
+			echo $id;
+		}
 	}
 
 	function getLocationData() {
